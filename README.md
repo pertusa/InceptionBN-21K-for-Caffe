@@ -8,4 +8,8 @@ There are minor differences in the Caffe and MXNet outputs, probably due to the 
 
 The trained model can be downloaded from: http://www.dlsi.ua.es/~pertusa/deep/Inception21k.caffemodel
 
+The file deploy.prototxt was generated with the code at symbol_inception-bn-full.cc
+
+The code for model conversion will be released soon.
+
 Licensed under CC0
