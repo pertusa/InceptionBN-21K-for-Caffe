@@ -243,7 +243,7 @@ string InceptionFactoryB(string data, int num_3x3red, int num_3x3, int num_d3x3r
     string cd3x3 = ConvFactory(cd3x3r, num_d3x3, 3, 1, 1, concat(name,"_double_3x3_0"));
     cd3x3 = ConvFactory(cd3x3, num_d3x3, 3, 2, 1, concat(name,"_double_3x3_1"));
     // pool + proj
-    string pooling = printPooling(data, 3, 2, 1, "MAX", concat("max_pool_",name,"_pool"));
+    string pooling = printPooling(data, 3, 2, 0, "MAX", concat("max_pool_",name,"_pool"));
     // concat
     string concat_ = printConcat3(c3x3, cd3x3, pooling, concat("ch_concat_",name,"_chconcat"));
     return concat_;
@@ -257,13 +257,15 @@ int main()
     string data = printVariable("data");
     // stage 1
     string conv1 = ConvFactory(data, 96, 7, 2, 3, "conv1");
-//    string pool1 = printPooling(conv1, 3, 2, 0, "MAX", "pool1"); //https://github.com/dmlc/mxnet/issues/2718
-    string pool1 = printPooling(conv1, 3, 2, 1, "MAX", "pool1");
+    
+
+    string pool1 = printPooling(conv1, 3, 2, 0, "MAX", "pool1"); // Pooling is done as in previous MXNet version (conv are round up, pool are round down): https://github.com/dmlc/mxnet/issues/2718
+//    string pool1 = printPooling(conv1, 3, 2, 1, "MAX", "pool1");
     // stage 2
     string conv2red = ConvFactory(pool1, 128, 1, 1, 0, "conv2red");
     string conv2 = ConvFactory(conv2red, 288, 3, 1, 1, "conv2");
-//    string pool2 = printPooling(conv2, 3, 2, 0, "MAX", "pool2"); //https://github.com/dmlc/mxnet/issues/2718
-    string pool2 = printPooling(conv2, 3, 2, 1, "MAX", "pool2");
+    string pool2 = printPooling(conv2, 3, 2, 0, "MAX", "pool2");  // Pooling is done as in previous MXNet version (conv are round up, pool are round down)
+//    string pool2 = printPooling(conv2, 3, 2, 1, "MAX", "pool2");
     // stage 2
     string in3a = InceptionFactoryA(pool2, 96, 96, 96, 96, 144, "AVE", 48, "3a");
     string in3b = InceptionFactoryA(in3a, 96, 96, 144, 96, 144, "AVE", 96, "3b");

@@ -55,7 +55,7 @@ layer {
      pool: MAX
      kernel_size: 3
      stride: 2
-     pad: 1
+     pad: 0
   }
 }
 
@@ -148,7 +148,7 @@ layer {
      pool: MAX
      kernel_size: 3
      stride: 2
-     pad: 1
+     pad: 0
   }
 }
 
@@ -967,7 +967,7 @@ layer {
      pool: MAX
      kernel_size: 3
      stride: 2
-     pad: 1
+     pad: 0
   }
 }
 
@@ -2401,7 +2401,7 @@ layer {
      pool: MAX
      kernel_size: 3
      stride: 2
-     pad: 1
+     pad: 0
   }
 }
 
