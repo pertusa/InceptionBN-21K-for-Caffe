@@ -14,6 +14,6 @@ https://github.com/dmlc/mxnet/issues/2718), which has changed in latest MXNet ve
 
 The file deploy.prototxt was generated with the code at symbol_inception-bn-full.cc.
 
-The code for model conversion (MXNet -> Caffe) will be released soon.
+The code for model conversion (MXNet -> Caffe) can be found here: https://github.com/pertusa/MXNetToCaffeConverter
 
 Licensed under CC0
