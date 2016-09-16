@@ -2,14 +2,18 @@
 
 Inception-BN ImageNet (21K classes) model for Caffe.
 
-Model weights and prototxt were converted from the MXNet ImageNet21k model at: https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-21k-inception.md
+The model can be downloaded from: http://www.dlsi.ua.es/~pertusa/deep/Inception21k.caffemodel
 
-There are minor differences in the Caffe and MXNet outputs, probably due to the behaviour of MXNet padding in pooling layers (see https://github.com/dmlc/mxnet/issues/2718).
+It was directly converted from the MXNet ImageNet21k model at: https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-21k-inception.md
 
-The trained model can be downloaded from: http://www.dlsi.ua.es/~pertusa/deep/Inception21k.caffemodel
+MXNet Batch Normalization is translated into Caffe with a BatchNorm layer
+containing the learned mean and variance (scale=1), followed by a Scale layer that applies the learned \gamma and \beta.
+
+There are minor differences in the Caffe and MXNet outputs, probably due to the behaviour of MXNet padding in pooling layers (see
+https://github.com/dmlc/mxnet/issues/2718), which has changed in latest MXNet versions.
 
 The file deploy.prototxt was generated with the code at symbol_inception-bn-full.cc
 
-The code for model conversion will be released soon.
+The code for model conversion (MXNet -> Caffe) will be released soon.
 
 Licensed under CC0
